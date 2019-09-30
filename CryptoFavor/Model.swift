@@ -62,7 +62,19 @@ class Coin {
         if let image = UIImage(named: symbol.lowercased()){
             self.image = image
         }
-        
+    }
+    func priceAsString() -> String{
+        if price == 0.0{
+             return "On the way..."
+        }
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.numberStyle = .currency
+        if let refacPrice = formatter.string(from: NSNumber(floatLiteral: price)){
+            return refacPrice
+        }else{
+            return "Error"
+        }
     }
 }
 

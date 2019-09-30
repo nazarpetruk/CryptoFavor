@@ -32,8 +32,10 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
         cell.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         let coin = CoinData.shared.coins[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Futura-Medium", size: 20)
+        cell.layer.borderWidth = 1.5
+        cell.layer.borderColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.text = "\(coin.symbol) - \(coin.price)"
+        cell.textLabel?.text = "\(coin.symbol) - \(coin.priceAsString())"
         cell.imageView?.image = coin.image
     
         return cell
