@@ -12,6 +12,8 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 70
+        tableView.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         CoinData.shared.getPrices()
         CoinData.shared.delegate = self
     }
@@ -27,9 +29,13 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         let coin = CoinData.shared.coins[indexPath.row]
+        cell.textLabel?.font = UIFont(name: "Futura-Medium", size: 20)
+        cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = "\(coin.symbol) - \(coin.price)"
         cell.imageView?.image = coin.image
+    
         return cell
     }
 }
