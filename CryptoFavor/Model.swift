@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class CoinData {
     static let shared = CoinData()
     var coins = [Coin]()
+    weak var delegate : CoinDataDelegate?
     
     private init() {
-        let symbols = ["BTC", "ETH", "LTC"]
+        let symbols = ["BTC","ETH","LTC"]
         
         for symbol in symbols {
             let coin = Coin(symbol: symbol)
@@ -21,6 +23,31 @@ class CoinData {
             
         }
     }
+    func getPrices() {
+        var listOfCryptoSmbls = ""
+        for coin in coins {
+            listOfCryptoSmbls += coin.symbol
+            if coin.symbol != coins.last?.symbol {
+                listOfCryptoSmbls += ","
+            }
+        }
+        Alamofire.request("https://min-api.cryptocompare.com/data/pricemulti?fsyms=\(listOfCryptoSmbls)&tsyms=USD").responseJSON { (response) in
+            if let json = response.result.value as? [String:Any] {
+                for coin in self.coins{
+                    if let coinJ = json[coin.symbol] as? [String : Double]{
+                        if let price = coinJ["USD"]{
+                            coin.price = price
+                        }
+                    }
+                }
+                self.delegate?.newPrices?()
+            }
+        }
+    }
+}
+
+@objc protocol CoinDataDelegate: class {
+    @objc optional func newPrices()
 }
 
 class Coin {
