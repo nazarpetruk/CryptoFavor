@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2276393C15AE49FA1E7A05C737427F51"
-               BlueprintName = "Pods-CryptoFavor"
+               BlueprintIdentifier = "D6067EFA60849422D633820B2ABC28C4"
+               BlueprintName = "SwiftChart"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-CryptoFavor.framework">
+               BuildableName = "SwiftChart.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -8,5 +8,6 @@ target 'CryptoFavor' do
   use_frameworks!
 
   pod 'Alamofire', '4.7.2'
+  pod 'SwiftChart', '1.0.1'
 
 end
