@@ -13,7 +13,6 @@
 		4424729223424ACC00AAA14B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4424729023424ACC00AAA14B /* LaunchScreen.storyboard */; };
 		4424729A23424B0900AAA14B /* CryptoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424729923424B0900AAA14B /* CryptoVC.swift */; };
 		4424729C23424C6300AAA14B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424729B23424C6300AAA14B /* Model.swift */; };
-		4424729E234254F100AAA14B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424729D234254F100AAA14B /* Constants.swift */; };
 		44CCDE6C234363EB00074715 /* CoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCDE6B234363EB00074715 /* CoinVC.swift */; };
 		9F29EBFBB64287F7E00040CA /* Pods_CryptoFavor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822B5D100A78983AFED57E64 /* Pods_CryptoFavor.framework */; };
 /* End PBXBuildFile section */
@@ -28,7 +27,6 @@
 		4424729323424ACC00AAA14B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4424729923424B0900AAA14B /* CryptoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoVC.swift; sourceTree = "<group>"; };
 		4424729B23424C6300AAA14B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		4424729D234254F100AAA14B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		44CCDE6B234363EB00074715 /* CoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinVC.swift; sourceTree = "<group>"; };
 		822B5D100A78983AFED57E64 /* Pods_CryptoFavor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoFavor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A54B7E0F9C5E10851C5DA3 /* Pods-CryptoFavor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoFavor.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoFavor/Pods-CryptoFavor.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 				4424729923424B0900AAA14B /* CryptoVC.swift */,
 				44CCDE6B234363EB00074715 /* CoinVC.swift */,
 				4424729B23424C6300AAA14B /* Model.swift */,
-				4424729D234254F100AAA14B /* Constants.swift */,
 				4424728523424ACB00AAA14B /* AppDelegate.swift */,
 				4424728723424ACB00AAA14B /* SceneDelegate.swift */,
 				4424728E23424ACC00AAA14B /* Assets.xcassets */,
@@ -210,7 +207,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4424729E234254F100AAA14B /* Constants.swift in Sources */,
 				4424728623424ACB00AAA14B /* AppDelegate.swift in Sources */,
 				4424729A23424B0900AAA14B /* CryptoVC.swift in Sources */,
 				44CCDE6C234363EB00074715 /* CoinVC.swift in Sources */,

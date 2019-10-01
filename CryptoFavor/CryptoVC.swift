@@ -15,6 +15,7 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
         tableView.rowHeight = 70
         tableView.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         CoinData.shared.getPrices()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
