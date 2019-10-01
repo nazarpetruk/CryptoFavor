@@ -36,7 +36,7 @@ class CoinVC: UIViewController, CoinDataDelegate {
             
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(editTapped))
-            navigationItem.title = "CryptoFavor"
+            navigationItem.title = "\(coin.symbol)"
             
             
             //MARK: Chart
@@ -83,6 +83,9 @@ class CoinVC: UIViewController, CoinDataDelegate {
             alert.addTextField { (textField) in
                 textField.placeholder = "Coins"
                 textField.keyboardType = .decimalPad
+                if self.coin?.amount != 0.0{
+                    textField.text = String(coin.amount)
+                }
             }
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 if let text = alert.textFields?[0].text{
