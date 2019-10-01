@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let navController = UINavigationController(rootViewController: CryptoVC())
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        navigationBarAppearance.barTintColor = #colorLiteral(red: 0.3333333333, green: 0.9019607843, blue: 0.7568627451, alpha: 1)
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font:UIFont(name: "Futura-Bold", size: 20)!, NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationBarAppearance.tintColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
+        navigationBarAppearance.barTintColor = #colorLiteral(red: 0.3450980392, green: 0.6941176471, blue: 0.6235294118, alpha: 1)
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font:UIFont(name: "Futura-Bold", size: 20)!, NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)]
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
