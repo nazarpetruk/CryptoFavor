@@ -12,23 +12,59 @@ import SwiftChart
 class CoinVC: UIViewController, CoinDataDelegate {
     
     //MARK: Vars & Const
-    
     var coin : Coin?
     var chart = Chart()
+    var userCoinLbl = UILabel()
+    var totalValueLbl = UILabel()
+    var priceLbl = UILabel()
+    
+    //MARK: Sizing Constants
     private let chartHeight : CGFloat = 300
+    private let imageSize : CGFloat = 100
+    private let standardLblHeight : CGFloat = 50
+    private let spacingStndrd : CGFloat = 20
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoinData.shared.delegate = self
-        view.backgroundColor = UIColor.white
-        edgesForExtendedLayout = []
-        chart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: chartHeight)
-        chart.yLabelsFormatter = { CoinData.shared.doubleToMoneyString(double: $1 ) }
-        chart.xLabels = [30,25,20,15,10,5,0]
-        chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
-        view.addSubview(chart)
-        coin?.getHistoricalData()
         
+        if let coin = coin {
+            coin.getHistoricalData()
+            CoinData.shared.delegate = self
+            
+            view.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
+            edgesForExtendedLayout = []
+            
+            //MARK: Chart
+            chart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: chartHeight)
+            chart.labelColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            chart.yLabelsFormatter = { CoinData.shared.doubleToMoneyString(double: $1 ) }
+            chart.xLabels = [30,25,20,15,10,5,0]
+            chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
+            
+            //MARK: Image
+            let imageView = UIImageView(frame: CGRect(x: view.frame.size.width - imageSize * 4, y: chartHeight + spacingStndrd, width: imageSize, height: imageSize))
+            imageView.image = coin.image
+            
+            //MARK: Labels
+            priceLbl.frame = CGRect(x: 0, y: chartHeight + spacingStndrd - 10, width: view.frame.size.width + imageSize, height: standardLblHeight)
+            userCoinLbl.frame = CGRect(x: 0, y: chartHeight + spacingStndrd - 20 + standardLblHeight, width: view.frame.size.width + imageSize, height: standardLblHeight)
+            totalValueLbl.frame = CGRect(x: 0, y: chartHeight + spacingStndrd * 2 + standardLblHeight, width: view.frame.size.width + imageSize, height: standardLblHeight)
+            
+            totalValueLbl.text = coin.amountAsString()
+            priceLbl.text = coin.priceAsString()
+            userCoinLbl.text = "\(coin.symbol) : \(coin.amount) "
+            
+            labelConfig(toConfig: totalValueLbl)
+            labelConfig(toConfig: priceLbl)
+            labelConfig(toConfig: userCoinLbl)
+            
+            //MARK: Subviews added
+            view.addSubview(totalValueLbl)
+            view.addSubview(chart)
+            view.addSubview(userCoinLbl)
+            view.addSubview(priceLbl)
+            view.addSubview(imageView)
+        }
     }
     func historyDataAppeared() {
         if let coin = coin {
@@ -36,7 +72,15 @@ class CoinVC: UIViewController, CoinDataDelegate {
             series.area = true
             chart.add(series)
         }
-        
     }
-
+    func labelConfig(toConfig label: UILabel){
+        label.textAlignment = .center
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.font = UIFont(name: "Futura-Medium", size: 20)
+    }
+    func imageConfig(toConfig imageView: UIImageView){
+        imageView.layer.cornerRadius = 50
+        imageView.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        imageView.layer.borderWidth = 0.75
+    }
 }

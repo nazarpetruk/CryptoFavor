@@ -15,7 +15,11 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
         tableView.rowHeight = 70
         tableView.backgroundColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
         CoinData.shared.getPrices()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         CoinData.shared.delegate = self
+        tableView.reloadData()
     }
     
     func newPrices() {
@@ -36,9 +40,6 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
         cell.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = "\(coin.symbol) - \(coin.priceAsString())"
-//        cell.imageView?.layer.cornerRadius = 20
-//        cell.imageView?.layer.borderWidth = 0.5
-//        cell.imageView?.layer.borderColor = (UIColor.white).cgColor
         cell.imageView?.image = coin.image
     
         return cell
@@ -46,7 +47,6 @@ class CryptoVC: UITableViewController, CoinDataDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coinVC = CoinVC()
         coinVC.coin = CoinData.shared.coins[indexPath.row]
-        navigationController?.pushViewController(coinVC, animated: true)
-        
+        navigationController?.pushViewController(coinVC, animated: true)  
     }
 }
