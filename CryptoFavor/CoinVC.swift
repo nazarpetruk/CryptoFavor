@@ -19,7 +19,7 @@ class CoinVC: UIViewController, CoinDataDelegate {
     var priceLbl = UILabel()
     
     //MARK: Sizing Constants
-    private let chartHeight : CGFloat = 500
+    private let chartHeight : CGFloat = 650
     private let imageSize : CGFloat = 100
     private let standardLblHeight : CGFloat = 50
     private let spacingStndrd : CGFloat = 20
@@ -47,7 +47,7 @@ class CoinVC: UIViewController, CoinDataDelegate {
             chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
             
             //MARK: Image
-            let imageView = UIImageView(frame: CGRect(x: view.frame.size.width - imageSize * 4, y: chartHeight + spacingStndrd, width: imageSize, height: imageSize))
+            let imageView = UIImageView(frame: CGRect(x: view.frame.size.width - imageSize * 3.5, y: chartHeight + spacingStndrd, width: imageSize, height: imageSize))
             imageView.image = coin.image
             
             //MARK: Labels config.

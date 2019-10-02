@@ -16,13 +16,19 @@ class CoinData {
     
     private init() {
         let symbols = ["BTC","ETH","LTC", "ZEC", "DASH", "XRP", "XMR", "BCH", "NEO", "ADA", "EOS", "TRX", "BNB", "USDT", "NULS"]
-        
         for symbol in symbols {
             let coin = Coin(symbol: symbol)
             coins.append(coin)
-            
         }
     }
+    func netWorthAsString() -> String {
+        var netWorth = 0.0
+        for coin in coins {
+            netWorth += coin.amount * coin.price
+        }
+        return doubleToMoneyString(double: netWorth)
+    }
+    
     func getPrices() {
         var listOfCryptoSmbls = ""
         for coin in coins {
