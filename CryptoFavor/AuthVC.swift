@@ -10,6 +10,7 @@ import UIKit
 import LocalAuthentication
 
 class AuthVC: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class AuthVC: UIViewController {
                     navigationBarAppearance.tintColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
                     navigationBarAppearance.barTintColor = #colorLiteral(red: 0.3450980392, green: 0.6941176471, blue: 0.6235294118, alpha: 1)
                     navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font:UIFont(name: "Futura-Bold", size: 25)!, NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)]
+                    navController.modalPresentationStyle = .fullScreen
                     self.present(navController, animated: true, completion: nil)
                 }
             }else{

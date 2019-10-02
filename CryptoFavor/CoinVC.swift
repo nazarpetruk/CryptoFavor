@@ -91,6 +91,7 @@ class CoinVC: UIViewController, CoinDataDelegate {
                 if let text = alert.textFields?[0].text{
                     if let enteredAmount = Double(text){
                         self.coin?.amount = enteredAmount
+                        UserDefaults.standard.set(enteredAmount, forKey: coin.symbol + "amount")
                         self.labelReload()
                     }
                 }
