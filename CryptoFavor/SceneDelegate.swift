@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,14 +16,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let navController = UINavigationController(rootViewController: CryptoVC())
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
-        navigationBarAppearance.barTintColor = #colorLiteral(red: 0.3450980392, green: 0.6941176471, blue: 0.6235294118, alpha: 1)
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font:UIFont(name: "Futura-Bold", size: 25)!, NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)]
-        window?.rootViewController = navController
+        
+        if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) && UserDefaults.standard.bool(forKey: "secure"){
+            let authVC = AuthVC()
+            window?.rootViewController = authVC
+        }else{
+            let cryptoVC = CryptoVC()
+            let navController = UINavigationController(rootViewController: cryptoVC)
+            let navigationBarAppearance = UINavigationBar.appearance()
+                               navigationBarAppearance.tintColor = #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)
+                               navigationBarAppearance.barTintColor = #colorLiteral(red: 0.3450980392, green: 0.6941176471, blue: 0.6235294118, alpha: 1)
+                               navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font:UIFont(name: "Futura-Bold", size: 25)!, NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1725490196, green: 0.2274509804, blue: 0.2784313725, alpha: 1)]
+            window?.rootViewController = navController
+        }
         window?.makeKeyAndVisible()
     }
 
